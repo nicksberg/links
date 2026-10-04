@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nicksberg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF1EC; --card:#FFFFFF; --ink:#13201C; --muted:#5B6862; --line:#D5DCD5;
+  --accent:#2B45F5; --on-accent:#FFFFFF; --pop:#FFD84D; --on-pop:#13201C;
+  --r:20px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0F1714;--card:#18231F;--ink:#EAF0EC;--muted:#9AA9A2;--line:#2A3833;--accent:#7C8CFF;--on-accent:#0F1714}
+}
+:root[data-theme="dark"]{--bg:#0F1714;--card:#18231F;--ink:#EAF0EC;--muted:#9AA9A2;--line:#2A3833;--accent:#7C8CFF;--on-accent:#0F1714}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Manrope,system-ui,sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+.top{max-width:1100px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font:700 20px Unbounded,sans-serif;letter-spacing:-.02em}
+.brand i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--accent);margin-right:8px}
+.lang{display:flex;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px}
+.lang button{font:600 14px Manrope,sans-serif;border:0;background:none;color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+.page{max-width:1100px;margin:0 auto;padding:8px 20px 40px;display:grid;gap:24px}
+.profile{text-align:center}
+.avatar{width:104px;height:104px;border-radius:50%;margin:8px auto 16px; background-image:url('pfp.jpg'); background-size: 104px; color:var(--on-pop);display:grid;place-items:center;font:700 38px Unbounded,sans-serif;border:4px solid var(--card);box-shadow:0 0 0 2px var(--ink)}
+h1{font:700 26px/1.15 Unbounded,sans-serif;margin:0 0 8px;letter-spacing:-.02em}
+.bio{color:var(--muted);margin:0 auto;max-width:34ch}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:600}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:#2DB964}
+.socials{display:flex;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap}
+.socials a{padding-left:20px;padding-right:20px;width:auto;height:44px;border-radius:40px;border:1.5px solid var(--ink);display:grid;place-items:center;font:700 13px Unbounded,sans-serif}
+.socials a:hover{background:var(--ink);color:var(--bg)}
+
+.links{display:grid;gap:12px}
+.link{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;min-height:68px;transition:transform .15s,border-color .15s}
+.link:hover{transform:translateY(-2px);border-color:var(--ink)}
+.badge{flex:none;width:40px;height:40px;border-radius:12px;background:var(--bg);display:grid;place-items:center;font:700 14px Unbounded,sans-serif}
+.link b{display:block;font-weight:700}
+.link small{color:var(--muted);font-size:14px}
+.link svg{margin-left:auto;flex:none;opacity:.5}
+.link.main{background:var(--accent);color:var(--on-accent);border-color:var(--accent);padding:20px;min-height:96px}
+.link.main .badge{background:var(--pop);color:var(--on-pop)}
+.link.main small{color:inherit;opacity:.85}
+.link.main b{font:700 18px/1.2 Unbounded,sans-serif}
+
+footer{max-width:1100px;margin:0 auto;padding:0 20px 28px;text-align:center;color:var(--muted);font-size:14px}
+footer a{font-weight:700;color:var(--ink);text-decoration:underline}
+
+@media (min-width:900px){
+  .top{padding:24px 32px}
+  .page{grid-template-columns:360px 1fr;gap:56px;padding:32px 32px 64px;align-items:start}
+  .profile{position:sticky;top:24px;text-align:left}
+  h1{font-size:34px}
+  .bio{margin:0}
+  .socials{justify-content:flex-start}
+  .links{grid-template-columns:1fr 1fr;gap:16px}
+  .link.main{grid-column:1/-1;min-height:140px;padding:28px}
+  .link.main b{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){.link{transition:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="lang" role="group" aria-label="Language">
+    <button data-l="kk" aria-pressed="false">KK</button>
+    <button data-l="uk" aria-pressed="false">UA</button>
+    <button data-l="ru" aria-pressed="true">RU</button>
+    <button data-l="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<main class="page">
+  <section class="profile">
+    <div class="avatar"></div>
+    <h1 data-t="name"></h1>
+    <p class="bio" data-t="bio"></p>
+    <div class="status" data-t="status"></div>
+    <nav class="socials" aria-label="Social">
+      <!--<a href="#" aria-label="Instagram">IG</a>-->
+      <a href="https://t.me/nicksberg" aria-label="Telegram">Telegram</a>
+      <!--<a href="#" aria-label="YouTube">YT</a>-->
+      <a href="https://tiktok.com/@nicksberg" aria-label="TikTok">TikTok</a>
+    </nav>
+  </section>
+
+  <section class="links">
+    <a class="link main" href="#"><span class="badge">01</span><span><b data-t="l1"></b><small data-t="l1s"></small></span></a>
+    <a class="link" href="#"><span class="badge">P</span><span><b data-t="l2"></b><small data-t="l2s"></small></span></a>
+    <!--<a class="link" href="#"><span class="badge">TG</span><span><b data-t="l3"></b><small data-t="l3s"></small></span></a>
+    <a class="link" href="#"><span class="badge">YT</span><span><b data-t="l4"></b><small data-t="l4s"></small></span></a>-->
+    <a class="link" href="#"><span class="badge">@</span><span><b data-t="l5"></b><small data-t="l5s"></small></span></a>
+  </section>
+</main>
+
+<!--<footer><span data-t="foot"></span> <a href="#" data-t="cta"></a></footer>-->
+
+<script>
+var I18N={
+ ru:{name:"nicksberg",bio:"",status:"лучший скрытопульный стример",
+  l1:"DonationAlerts",l1s:"Отправить донат в любой валюте",l2:"Розыгрыш скинов",l2s:"",l3:"Telegram-канал",l3s:"Закулисье и заметки из поездок",
+  l4:"YouTube",l4s:"Влоги и уроки по свету",l5:"Почта для сотрудничества",l5s:"flvne63@gmail.com",foot:"Страница создана в Linko.",cta:"Сделать свою"},
+ kk:{name:"nicksberg",bio:"",status:"Үздік жасырын пулы бар стример",
+  l1:"DonationAlerts",l1s:"Кез келген валютада донат жіберу",l2:"Скиндер ұтыс ойыны",l2s:"",l3:"Telegram-арна",l3s:"Сахна сыртындағы сәттер және сапар жазбалары",
+  l4:"YouTube",l4s:"Влогтар және жарық бойынша сабақтар",l5:"Ынтымақтастық үшін пошта",l5s:"flvne63@gmail.com",foot:"Бет Linko-да жасалды.",cta:"Өзіңдікін жасау"},
+ uk:{name:"nicksberg",bio:"",status:"Найкращий стрімер хідден-пулу",
+  l1:"DonationAlerts",l1s:"Надіслати донат у будь-якій валюті",l2:"Розіграш скінів",l2s:"",l3:"Telegram-канал",l3s:"Закулісся та нотатки з поїздок",
+  l4:"YouTube",l4s:"Влоги та уроки зі світла",l5:"Пошта для співпраці",l5s:"flvne63@gmail.com",foot:"Сторінку створено в Linko.",cta:"Зробити свою"},
+ en:{name:"nicksberg",bio:"",status:"The best streamer from hidden pool",
+  l1:"DonationAlerts",l1s:"Send a donation in any currency",l2:"Skin giveaway",l2s:"",l3:"Telegram channel",l3s:"Behind the scenes and travel notes",
+  l4:"YouTube",l4s:"Vlogs and lighting tutorials",l5:"Business inquiries",l5s:"flvne63@gmail.com",foot:"Page made with Linko.",cta:"Create yours"}
+};
+var arrow='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+document.querySelectorAll('.link').forEach(function(a){a.insertAdjacentHTML('beforeend',arrow)});
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-t]').forEach(function(el){el.textContent=I18N[l][el.dataset.t]});
+  document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l)});
+  document.title='Linko — '+I18N[l].name;
+  try{localStorage.setItem('linko-lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
+var start='ru';
+try{start=localStorage.getItem('linko-lang')||((navigator.language||'ru').slice(0,2))}catch(e){}
+setLang(I18N[start]?start:'ru');
+</script>
+</body>
+</html>
