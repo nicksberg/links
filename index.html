@@ -110,16 +110,16 @@ footer a{font-weight:700;color:var(--ink);text-decoration:underline}
 var I18N={
  ru:{name:"nicksberg",bio:"",status:"лучший скрытопульный стример",
   l1:"DonationAlerts",l1s:"Отправить донат в любой валюте",l2:"Розыгрыш скинов",l2s:"",l3:"Telegram-канал",l3s:"Закулисье и заметки из поездок",
-  l4:"YouTube",l4s:"Влоги и уроки по свету",l5:"Почта для сотрудничества",l5s:"flvne63@gmail.com",foot:"Страница создана в Linko.",cta:"Сделать свою"},
+  l4:"YouTube",l4s:"Влоги и уроки по свету",l5:"Почта для сотрудничества",l5s:"flvne63@gmail.com",foot:"Страница создана в Nicksberg.",cta:"Сделать свою"},
  kk:{name:"nicksberg",bio:"",status:"Үздік жасырын пулы бар стример",
   l1:"DonationAlerts",l1s:"Кез келген валютада донат жіберу",l2:"Скиндер ұтыс ойыны",l2s:"",l3:"Telegram-арна",l3s:"Сахна сыртындағы сәттер және сапар жазбалары",
-  l4:"YouTube",l4s:"Влогтар және жарық бойынша сабақтар",l5:"Ынтымақтастық үшін пошта",l5s:"flvne63@gmail.com",foot:"Бет Linko-да жасалды.",cta:"Өзіңдікін жасау"},
+  l4:"YouTube",l4s:"Влогтар және жарық бойынша сабақтар",l5:"Ынтымақтастық үшін пошта",l5s:"flvne63@gmail.com",foot:"Бет Nicksberg-да жасалды.",cta:"Өзіңдікін жасау"},
  uk:{name:"nicksberg",bio:"",status:"Найкращий стрімер хідден-пулу",
   l1:"DonationAlerts",l1s:"Надіслати донат у будь-якій валюті",l2:"Розіграш скінів",l2s:"",l3:"Telegram-канал",l3s:"Закулісся та нотатки з поїздок",
-  l4:"YouTube",l4s:"Влоги та уроки зі світла",l5:"Пошта для співпраці",l5s:"flvne63@gmail.com",foot:"Сторінку створено в Linko.",cta:"Зробити свою"},
+  l4:"YouTube",l4s:"Влоги та уроки зі світла",l5:"Пошта для співпраці",l5s:"flvne63@gmail.com",foot:"Сторінку створено в Nicksberg.",cta:"Зробити свою"},
  en:{name:"nicksberg",bio:"",status:"The best streamer from hidden pool",
   l1:"DonationAlerts",l1s:"Send a donation in any currency",l2:"Skin giveaway",l2s:"",l3:"Telegram channel",l3s:"Behind the scenes and travel notes",
-  l4:"YouTube",l4s:"Vlogs and lighting tutorials",l5:"Business inquiries",l5s:"flvne63@gmail.com",foot:"Page made with Linko.",cta:"Create yours"}
+  l4:"YouTube",l4s:"Vlogs and lighting tutorials",l5:"Business inquiries",l5s:"flvne63@gmail.com",foot:"Page made with Nicksberg.",cta:"Create yours"}
 };
 var arrow='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
 document.querySelectorAll('.link').forEach(function(a){a.insertAdjacentHTML('beforeend',arrow)});
@@ -127,12 +127,12 @@ function setLang(l){
   document.documentElement.lang=l;
   document.querySelectorAll('[data-t]').forEach(function(el){el.textContent=I18N[l][el.dataset.t]});
   document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===l)});
-  document.title='Linko — '+I18N[l].name;
-  try{localStorage.setItem('linko-lang',l)}catch(e){}
+  document.title='Nicksberg — '+I18N[l].name;
+  try{localStorage.setItem('Nicksberg-lang',l)}catch(e){}
 }
 document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l)})});
 var start='ru';
-try{start=localStorage.getItem('linko-lang')||((navigator.language||'ru').slice(0,2))}catch(e){}
+try{start=localStorage.getItem('Nicksberg-lang')||((navigator.language||'ru').slice(0,2))}catch(e){}
 setLang(I18N[start]?start:'ru');
 </script>
 </body>
